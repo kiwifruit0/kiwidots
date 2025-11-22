@@ -1,0 +1,13 @@
+[Unit]
+Description= Lock before suspend
+Before=sleep.target
+
+[Service]
+User=%I
+Type=simple
+Environment=WAYLAND_DISPLAY=wayland-1
+ExecStart=bash -c 'export XDG_RUNTIME_DIR="/run/user/$(id -u %I)";exec /usr/bin/hyprlock';exec /usr/bin/sleep 1
+ExecStartPost=sleep 0.5
+
+[Install]
+WantedBy=sleep.target

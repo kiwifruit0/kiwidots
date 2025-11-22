@@ -1,0 +1,82 @@
+[global]
+    follow = keyboard
+    width = (0, 300)
+    height = (0, 150)
+    origin = top-right
+    offset = (15, 15)
+    scale = 0
+    notification_limit = 10
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 0
+    icon_corner_radius = 0
+    indicate_hidden = yes
+    transparency = 5
+    separator_height = 2
+    padding = 10
+    horizontal_padding = 10
+    text_icon_padding = 0
+    frame_width = 2
+    frame_color = "#8fbcbb"
+    gap_size = 2
+    separator_color = frame
+    sort = yes
+    idle_threshold = 120
+    font = JetbrainsMono Nerd Font 9
+    line_height = 7
+    markup = full
+    format = "%a: <b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = top
+    show_age_threshold = 60
+    word_wrap = no
+    ellipsize = end
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    enable_recursive_icon_lookup = true
+    icon_theme = Adwaita
+    icon_position = left
+    min_icon_size = 48
+    max_icon_size = 128
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    sticky_history = yes
+    history_length = 50
+    dmenu = "/usr/bin/rofi -dmenu -p 'Dunst'"
+    browser = /usr/bin/zen-browser -new-tab
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 9
+    ignore_dbusclose = false
+    force_xwayland = false
+    force_xinerama = false
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = context
+    mouse_right_click = do_action, close_all
+
+[experimental]
+    per_monitor_dpi = false
+
+[urgency_low]
+    background = "#2E3440"
+    foreground = "#d8dee9"
+    frame_color = "#d8dee9"
+    timeout = 7
+
+[urgency_normal]
+    background = "#2E3440"
+    foreground = "#d8dee9"
+    frame_color = "#8fbcbb"
+    highlight = "#BF616A"
+    timeout = 7
+
+[urgency_critical]
+    background = "#2E3440"
+    foreground = "#d8dee9"
+    frame_color = "#bf616a"
+    timeout = 0

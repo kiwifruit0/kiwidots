@@ -1,0 +1,87 @@
+version = 3
+final_space = true
+enable_cursor_positioning = true
+
+[global]
+  enable_cache = true
+  reload_interval = 15
+  max_cache_size = 50
+  transient_prompt = true
+
+[palette]
+  blue = '#8CAAEE'
+  closer = 'p:os'
+  lavender = '#BABBF1'
+  os = '#ACB0BE'
+  pink = '#F4B8E4'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '{{ .Path }}  '
+    foreground = 'p:pink'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      home_icon = '~'
+      style = 'full'
+      max_depth = 3
+      hide_root_location = true
+
+  [[blocks.segments]]
+    type = 'git'
+    foreground = 'p:lavender'
+    style = 'plain'
+    template = '{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }} *{{ end }} {{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}'
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      fetch_status = true
+      async = true
+      fetch_worktree_count = false
+      fetch_stash_count = false
+      fetch_upstream_icon = true
+
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  [[blocks.segments]]
+    type = 'python'
+    foreground = 'p:lavender'
+    style = 'plain'
+    template = ' {{ .Venv }} '
+
+      [blocks.segments.properties]
+        fetch_version = false
+        async = true
+
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = ''
+    foreground_templates = [
+      "{{if gt .Code 0}}#bf616a{{end}}",
+      "{{if eq .Code 0}}p:lavender{{end}}",
+    ]
+    type = 'text'
+    style = 'plain'
+
+[transient_prompt]
+  foreground_templates = [
+    "{{if gt .Code 0}}#bf616a{{end}}",
+    "{{if eq .Code 0}}p:lavender{{end}}",
+  ]
+  background = 'transparent'
+  template = ' '
+
+

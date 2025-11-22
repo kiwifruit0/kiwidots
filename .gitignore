@@ -1,0 +1,5 @@
+.zsh_history
+.bash_history
+
+config/.config/tmux/plugins/*
+config/.config/zsh/*/

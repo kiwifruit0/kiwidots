@@ -1,0 +1,29 @@
+return {}
+--return {
+--  {
+--    "neovimhaskell/haskell-vim",
+--    ft = { "haskell", "lhaskell", "cabal" },
+--    init = function()
+--      -- Enable extra syntax features
+--      vim.g.haskell_enable_quantification = 1
+--      vim.g.haskell_enable_recursivedo = 1
+--      vim.g.haskell_enable_arrowsyntax = 1
+--      vim.g.haskell_enable_pattern_synonyms = 1
+--      vim.g.haskell_enable_typeroles = 1
+--      vim.g.haskell_enable_static_pointers = 1
+--      vim.g.haskell_backpack = 1
+--
+--      -- Optional: classic highlighting style
+--      -- vim.g.haskell_classic_highlighting = 1
+--
+--      -- Indentation preferences (tweak as you like)
+--      -- vim.g.haskell_indent_if = 3
+--      -- vim.g.haskell_indent_case = 2
+--      -- vim.g.haskell_indent_let = 4
+--      -- vim.g.haskell_indent_where = 6
+--      -- vim.g.haskell_indent_do = 3
+--      -- vim.g.haskell_indent_in = 1
+--      -- vim.g.haskell_indent_guard = 2
+--    end,
+--  },
+--}
