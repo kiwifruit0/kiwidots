@@ -68,7 +68,28 @@ return {
             },
           },
         },
-				hls = {},
+        ruff = {
+          settings = {
+            format = { enabled = true },
+            organizeImports = true,
+            lint = {
+              enable = true,
+              select = { "E", "F", "W" },
+            },
+          },
+        },
+        hls = {},
+				clangd = {
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy",
+						"--header-insertion=iwyu",
+						"--completion-style=detailed",
+						"--function-arg-placeholders",
+					},
+					filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+				},
 			}
 
 			-- install servers in server list
@@ -83,6 +104,14 @@ return {
 				vim.lsp.config(name, cfg)
 				vim.lsp.enable(name)
 			end
+
+      -- Add this in your lspconfig config function, after setting up servers
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.py",
+        callback = function()
+          vim.lsp.buf.format({ async = false })
+        end,
+      })
 
 			-- set up diagnostics config
 			require("diagnostics.config")

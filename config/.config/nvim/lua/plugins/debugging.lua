@@ -30,7 +30,9 @@ return {
   config = function()
     local dap, dapui = require("dap"), require("dapui")
 
+    ------------------------------
     -- language specific setup
+    ------------------------------
     require('dapui').setup({
       controls = {
         enabled = true
@@ -62,6 +64,16 @@ return {
         ghciCmd = "ghci-dap --interactive -i${workspaceFolder}",
       },
     }
+
+    dap.adapters.codelldb = {
+      type = "executable",
+      command = "$/.local/share/nvim/mason/bin/codelldb"
+    }
+
+    dap.configurations.c = dap.configurations.cpp
+    dap.configurations.h = dap.configurations.cpp
+    dap.configurations.rust = dap.configurations.cpp
+
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
