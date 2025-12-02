@@ -38,7 +38,7 @@ window#waybar {
 tooltip {
     background: #2e3440;
     font-weight: bold;
-    border: 2px solid #8fbcbb;
+    border: 2px solid #81a1c1;
     border-radius: 10px;
 }
 
@@ -53,7 +53,7 @@ tooltip {
     padding: 0px 10px;
     min-width: 35px;
     background-color: #2e3440;
-    border: 2px solid #8fbcbb;
+    border: 2px solid #81a1c1;
     border-radius: 20px;
 }
 

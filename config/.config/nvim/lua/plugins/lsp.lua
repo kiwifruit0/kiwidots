@@ -30,6 +30,7 @@ return {
 		config = function()
 			-- for packages to install / with manual config
 			local pkgs = {
+        bashls = {},
 				-- lua packages
 				lua_ls = {
 					root_markers = {
@@ -52,33 +53,33 @@ return {
 						},
 					},
 				},
-        pylsp = {
-          settings = {
-            pylsp = {
-              plugins = {
-                pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
-                autopep8 = { enabled = false },
-                yapf = { enabled = false },
-                mccabe = { enabled = false },
-                pylsp_mypy = { enabled = false },
-                pylsp_black = { enabled = false },
-                pylsp_isort = { enabled = false },
-              },
-            },
-          },
-        },
-        ruff = {
-          settings = {
-            format = { enabled = true },
-            organizeImports = true,
-            lint = {
-              enable = true,
-              select = { "E", "F", "W" },
-            },
-          },
-        },
-        hls = {},
+				pylsp = {
+					settings = {
+						pylsp = {
+							plugins = {
+								pyflakes = { enabled = false },
+								pycodestyle = { enabled = false },
+								autopep8 = { enabled = false },
+								yapf = { enabled = false },
+								mccabe = { enabled = false },
+								pylsp_mypy = { enabled = false },
+								pylsp_black = { enabled = false },
+								pylsp_isort = { enabled = false },
+							},
+						},
+					},
+				},
+				ruff = {
+					settings = {
+						format = { enabled = true },
+						organizeImports = true,
+						lint = {
+							enable = true,
+							select = { "E", "F", "W" },
+						},
+					},
+				},
+				hls = {},
 				clangd = {
 					cmd = {
 						"clangd",
@@ -86,9 +87,14 @@ return {
 						"--clang-tidy",
 						"--header-insertion=iwyu",
 						"--completion-style=detailed",
-						"--function-arg-placeholders",
+						"--function-arg-placeholders=true", -- FIXED
 					},
+
 					filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+
+					-- IMPORTANT: do NOT override root_dir
+					-- default (from nvim-lspconfig) works correctly in git repos
+					-- and you confirmed it attaches when using {}
 				},
 			}
 
@@ -105,13 +111,13 @@ return {
 				vim.lsp.enable(name)
 			end
 
-      -- Add this in your lspconfig config function, after setting up servers
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.py",
-        callback = function()
-          vim.lsp.buf.format({ async = false })
-        end,
-      })
+			-- Add this in your lspconfig config function, after setting up servers
+			-- vim.api.nvim_create_autocmd("BufWritePre", {
+			--   pattern = "*.py",
+			--   callback = function()
+			--     vim.lsp.buf.format({ async = false })
+			--   end,
+			-- })
 
 			-- set up diagnostics config
 			require("diagnostics.config")
