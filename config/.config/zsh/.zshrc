@@ -76,3 +76,9 @@ alias ta='tmux attach-session'
 # ------------------------------
 [ -f "/home/kiwi/.ghcup/env" ] && . "/home/kiwi/.ghcup/env" # ghcup-env
 . "$HOME/.local/share/../bin/env"
+
+# distrobox fixes
+# export XDG_RUNTIME_DIR=/run/user/1000
+export PULSE_SERVER=unix:/run/user/1000/pulse/native
+export PIPEWIRE_RUNTIME_DIR=/run/user/1000
+export QT_FONT_DPI=192
