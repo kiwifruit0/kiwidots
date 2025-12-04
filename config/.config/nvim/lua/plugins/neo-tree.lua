@@ -13,6 +13,13 @@ return {
 	---@module 'neo-tree'
 	---@type neotree.Config
 	opts = {
-		-- options go here
+		event_handlers = {
+			{
+				event = "file_opened",
+				handler = function()
+					require("neo-tree.command").execute({ action = "close" })
+				end,
+			},
+		},
 	},
 }

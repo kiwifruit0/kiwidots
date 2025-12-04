@@ -17,7 +17,7 @@ return {
 		},
 		keys = {
 			{ "gd", vim.lsp.buf.definition, desc = "Go to definition" },
-			{ "gr", vim.lsp.buf.references, desc = "Find references" },
+			-- { "gr", vim.lsp.buf.references, desc = "Find references" },
 			{ "gi", vim.lsp.buf.implementation, desc = "Go to implementation" },
 			{ "K", vim.lsp.buf.hover, desc = "Hover documentation" },
 			{ "<leader>rn", vim.lsp.buf.rename, desc = "Rename symbol" },

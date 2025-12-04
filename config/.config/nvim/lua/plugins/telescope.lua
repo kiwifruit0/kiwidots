@@ -12,6 +12,7 @@ return {
       end, desc = 'Telescope find hidden files' },
       { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Find document symbols' },
       { '<leader>ws', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = 'Find workspace symbols' },
+      { '<leader>gr', '<cmd>Telescope lsp_references<cr>', desc = 'Find references' },
     },
   },
   {
