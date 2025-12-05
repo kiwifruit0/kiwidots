@@ -21,7 +21,14 @@ return {
 				},
 			},
 		},
-		keymap = { preset = "default", ["<C-f>"] = { "select_and_accept" } },
+		keymap = {
+			preset = "none",
+			["<C-f>"] = { "select_and_accept" },
+			["<C-y>"] = { "show", "show_documentation", "hide_documentation" },
+      ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+      ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+
+		},
 		appearance = {
 			nerd_font_variant = "mono",
 			use_nvim_cmp_as_default = false,
