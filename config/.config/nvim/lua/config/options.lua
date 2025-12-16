@@ -1,4 +1,6 @@
 -- general settings
+vim.opt.number = true
+vim.opt.signcolumn = 'no'
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.cmd('set ignorecase smartcase')
@@ -19,3 +21,6 @@ vim.cmd([[
   filetype plugin indent on
 ]])
 
+vim.cmd [[
+  hi CursorLineNr guifg=#FFFFFF guibg=NONE gui=bold
+]]

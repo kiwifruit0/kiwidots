@@ -30,7 +30,7 @@ return {
 		config = function()
 			-- for packages to install / with manual config
 			local pkgs = {
-        bashls = {},
+				bashls = {},
 				-- lua packages
 				lua_ls = {
 					root_markers = {
@@ -91,10 +91,6 @@ return {
 					},
 
 					filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-
-					-- IMPORTANT: do NOT override root_dir
-					-- default (from nvim-lspconfig) works correctly in git repos
-					-- and you confirmed it attaches when using {}
 				},
 			}
 
