@@ -40,7 +40,14 @@ return {
 			sources = {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.clang_format.with({
-					extra_args = { "--style=file" },
+					extra_args = {
+						"--style=" .. [[{
+            BasedOnStyle: LLVM,
+            ColumnLimit: 80,
+            BreakConstructorInitializers: BeforeColon,
+            PackConstructorInitializers: Never
+            }]],
+					},
 				}),
 				ormolu,
 			},
