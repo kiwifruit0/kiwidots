@@ -65,6 +65,7 @@ alias l='ls --color=auto -la'
 alias :q='exit'
 alias elt='exa --long --tree --git'
 alias timeshift-gtk='sudo -E HOME=/root XDG_CACHE_HOME=/root/.cache timeshift-gtk'
+alias leet='nvim leetcode.nvim'
 
 # tmux aliases
 alias tn='tmux new-session -s'
