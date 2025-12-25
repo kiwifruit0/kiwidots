@@ -90,7 +90,7 @@ return {
 						"--function-arg-placeholders=true", -- FIXED
 					},
 
-					filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+					filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp", "cuda" },
 				},
 			}
 
