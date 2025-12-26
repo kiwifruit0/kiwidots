@@ -1,2 +1,2 @@
-require("config.tmux-runner").setup()
+require("config.code-runner").setup()
 require("config.treesitter-highlighting")
