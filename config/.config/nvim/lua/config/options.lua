@@ -5,6 +5,7 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.cmd('set ignorecase smartcase')
 vim.opt.scrolloff = 10
+vim.opt.showtabline = 0
 
 -- tab options
 vim.opt.expandtab = true

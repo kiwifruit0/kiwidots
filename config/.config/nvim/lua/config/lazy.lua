@@ -29,4 +29,8 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = false },
 
+  rocks = {
+    enabled = true,
+    hererocks = true, -- This will install the correct Lua version
+  },
 })
