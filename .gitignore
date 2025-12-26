@@ -3,3 +3,4 @@
 
 config/.config/tmux/plugins/*
 config/.config/zsh/*/
+config/.config/hypr/hyprpaper.conf
