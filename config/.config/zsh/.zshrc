@@ -59,7 +59,7 @@ SAVEHIST=1000
 # ------------------------------ 
 alias c='clear'
 alias icat='kitty icat'
-alias se='sudoedit'
+alias se='sudo -E nvim'
 alias ls='ls --color=auto'
 alias l='ls --color=auto -la'
 alias :q='exit'
