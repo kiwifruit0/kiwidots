@@ -17,11 +17,24 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- set cwd to the directory passed to nvim (if any)
 vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    local arg = vim.fn.argv(0)
-    if arg and vim.fn.isdirectory(arg) == 1 then
-      vim.cmd.cd(arg)
-    end
-  end,
+	callback = function()
+		local arg = vim.fn.argv(0)
+		if arg and vim.fn.isdirectory(arg) == 1 then
+			vim.cmd.cd(arg)
+		end
+	end,
 })
 
+-- Remove padding when Neovim starts
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		os.execute("kitty @ set-spacing padding=0")
+	end,
+})
+
+-- Restore padding when Neovim exits
+vim.api.nvim_create_autocmd("VimLeave", {
+	callback = function()
+		os.execute("kitty @ set-spacing padding=10")
+	end,
+})

@@ -1,55 +1,46 @@
 # ------------------------------ 
-# set env variables
+# basic env
 # ------------------------------ 
-export PATH=$PATH:$HOME/.local/bin
-export ZDOTDIR=$HOME/.config/zsh
+export PATH="$HOME/.local/bin:$PATH"
+export ZDOTDIR="$HOME/.config/zsh"
+export PROMPT_CLEANUP=false
 
 # ------------------------------ 
-# znap
+# initialize znap
 # ------------------------------ 
-source $ZDOTDIR/znap/znap.zsh  # Start Znap
-# Download Znap, if it's not there yet.
-#[[ -r ~/.config/zsh/znap/znap.zsh ]] ||
-#    git clone --depth 1 -- \
-#        https://github.com/marlonrichert/zsh-snap.git $ZDOTDIR/znap
+source "$ZDOTDIR/znap/znap.zsh"
 
 # ------------------------------ 
-# oh-my-posh prompt
+# prompt
 # ------------------------------ 
-znap eval oh-my-posh 'oh-my-posh init zsh --config $ZDOTDIR/ohmyposhtheme.toml --print'
+znap eval oh-my-posh 'oh-my-posh init zsh --config $ZDOTDIR/ohmyposhtheme.toml'
 
 # ------------------------------ 
 # plugins
 # ------------------------------ 
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
-znap source zsh-users/zsh-syntax-highlighting
 
-# ------------------------------ 
-# options
-# ------------------------------ 
-setopt autocd
-unsetopt beep
-zle_highlight=(paste:none)
-bindkey '^F' autosuggest-accept  # Ctrl+F fill suggestion
-
-# ------------------------------
-# vim mode
-# ------------------------------
-# changing highlight colors to nord theme
 zvm_config() {
   ZVM_VI_HIGHLIGHT_FOREGROUND=#2e3440
   ZVM_VI_HIGHLIGHT_BACKGROUND=#8fbcbb
   ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold
+
+  ZVM_INIT_MODE=sourcing
 }
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 znap source jeffreytse/zsh-vi-mode
 
-# start in insert mode to prevent redraw lag
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+znap source zsh-users/zsh-syntax-highlighting
 
 # ------------------------------ 
-# settings
+# options + keybindings
 # ------------------------------ 
+setopt autocd
+unsetopt beep
+zle_highlight=(paste:none)
+bindkey '^F' autosuggest-accept
+
 HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
@@ -64,22 +55,12 @@ alias ls='ls --color=auto'
 alias l='ls --color=auto -la'
 alias :q='exit'
 alias elt='exa --long --tree --git'
-alias timeshift-gtk='sudo -E HOME=/root XDG_CACHE_HOME=/root/.cache timeshift-gtk'
-alias leet='nvim leetcode.nvim'
-
-# tmux aliases
-alias tn='tmux new-session -s'
-alias tl='tmux list-sessions'
-alias ta='tmux attach-session'
+alias omp='oh-my-posh'
 
 # ------------------------------
-# other
+# other envs
 # ------------------------------
-[ -f "/home/kiwi/.ghcup/env" ] && . "/home/kiwi/.ghcup/env" # ghcup-env
-. "$HOME/.local/share/../bin/env"
+# Use znap eval to cache these environment scripts so they don't run every time
+[ -f "$HOME/.ghcup/env" ] && znap eval ghcup-env 'cat "$HOME/.ghcup/env"'
+[ -f "$HOME/.local/share/../bin/env" ] && znap eval local-env 'cat "$HOME/.local/share/../bin/env"'
 
-# distrobox fixes
-# export XDG_RUNTIME_DIR=/run/user/1000
-export PULSE_SERVER=unix:/run/user/1000/pulse/native
-export PIPEWIRE_RUNTIME_DIR=/run/user/1000
-export QT_FONT_DPI=192
