@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if audio-playing; then
   echo "audio playing"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Check for active audio streams
 if pw-dump | jq -e '.[] | select(.type == "PipeWire:Interface:Node" and .info.state == "running")' > /dev/null 2>&1; then

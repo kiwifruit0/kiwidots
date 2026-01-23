@@ -12,7 +12,7 @@
   },
   "hyprland/workspaces": {
     "persistent-workspaces": {
-      "*": 6
+      "*": 4
     },
     "cursor": true
   },

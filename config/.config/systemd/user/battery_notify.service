@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery notification service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/battery_notify

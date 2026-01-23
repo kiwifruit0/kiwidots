@@ -19,8 +19,8 @@
     padding = 10
     horizontal_padding = 10
     text_icon_padding = 0
-    frame_width = 2
-    frame_color = "#8fbcbb"
+    frame_width = 1
+    frame_color = "#81a1c1"
     gap_size = 2
     separator_color = frame
     sort = yes
@@ -51,7 +51,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 9
+    corner_radius = 7
     ignore_dbusclose = false
     force_xwayland = false
     force_xinerama = false
@@ -71,7 +71,7 @@
 [urgency_normal]
     background = "#2E3440"
     foreground = "#d8dee9"
-    frame_color = "#8fbcbb"
+    frame_color = "#81a1c1"
     highlight = "#BF616A"
     timeout = 7
 

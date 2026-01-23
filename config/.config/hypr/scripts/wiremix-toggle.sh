@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if pgrep -f "kitty.*wiremix" >/dev/null; then
     pkill -f "kitty.*wiremix"

@@ -35,6 +35,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 -- Restore padding when Neovim exits
 vim.api.nvim_create_autocmd("VimLeave", {
 	callback = function()
-		os.execute("kitty @ set-spacing padding=10")
+		os.execute("kitty @ set-spacing padding=15")
 	end,
 })

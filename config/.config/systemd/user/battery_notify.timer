@@ -1,0 +1,9 @@
+[Unit]
+Description=low batter notification timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=3min
+
+[Install]
+WantedBy=timers.target

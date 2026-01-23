@@ -42,17 +42,21 @@ tooltip {
 
 #custom-separator, #custom-mpris-separator {
   color: @nord3;
-  padding: 0 10px;
+  padding: 0 15px;
+}
+
+#custom-mpris-separator {
+  transition: opacity 0.3s ease;
 }
 
 #workspaces button {
   color: transparent;
-  background: linear-gradient(90deg,rgba(59, 66, 82, 1) 0%, rgba(67, 76, 94, 1) 100%);
-  font-size: 14px;
-  border-radius: 6px;
+  background: linear-gradient(90deg, @nord1 0%, @nord2 100%);
+  border-radius: 7px;
   padding: 0px 7px;
   transition: all 0.3s ease;
   margin: 0 3px;
+  min-height: 2px;
 }
 
 #workspaces button:hover {
@@ -62,11 +66,25 @@ tooltip {
 #workspaces button.active {
   padding: 0px 15px;
   color: @nord0;
+  font-size: 14px;
   transition: all 0.3s ease;
-  background: linear-gradient(90deg,rgba(94, 129, 172, 1) 0%, rgba(129, 161, 193, 1) 100%);
+  background: linear-gradient(90deg, @nord10 0%, @nord9 100%);
   min-width: 30px;
+}
+
+
+#workspaces button.occupied {
+  min-height: 25px;
 }
 
 #mpris.paused {
   color: @nord3;
+}
+
+#battery.warning:not(.charging) {
+    color: @nord13;
+}
+
+#battery.critical:not(.charging) {
+    color: @nord12;
 }
