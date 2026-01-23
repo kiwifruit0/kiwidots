@@ -1,0 +1,81 @@
+{
+  "custom/separator" : {
+    "format": " | "
+  },
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": 6
+    },
+    "cursor": true
+  },
+  "hyprland/window": {
+    "max-length": 45
+  },
+  "clock": {
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format": "{:%d - %H:%M}",
+    "format-alt": "{:%a %d %b - %H:%M}",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "months": "<b>{}</b>",
+        "days": "<span color='#d8dee9'><b>{}</b></span>",
+        "today": "<span color='#8fbcbb'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "mpris": {
+    "format": "{artist} - {title}",
+    "tooltip-format": "{album}",
+    "format-paused": " {artist} - {title} | ",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+    "max-length": 30
+  },
+  "battery": {
+    "format": "{capacity} {icon} ",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "format-charging": "{capacity} 󰂄",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "wireplumber": {
+    "align": 1,
+    "format": "{volume} {icon}",
+    "format-icons": [
+      "󰕿",
+      "󰖀",
+      "󰕾"
+    ],
+    "format-muted": " 󰝟  ",
+    "on-click": "$HOME/.config/hypr/scripts/wiremix-toggle.sh",
+    "reverse-scrolling": 1,
+    "smooth-scrolling-threshold": 0.5
+  },
+  "backlight": {
+    "align": 1,
+    "format": "{percent} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "reverse-scrolling": 1,
+    "smooth-scrolling-threshold": 1
+  }
+}
