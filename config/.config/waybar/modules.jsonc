@@ -1,6 +1,14 @@
 {
   "custom/separator" : {
-    "format": " | "
+    "format": "|",
+    "tooltip": false,
+    "return-type": "json"
+  },
+  "custom/mpris-separator": {
+    "exec": "playerctl -l 2>/dev/null | grep -q '.' && echo '|' || echo ''",
+    "interval": 2,
+    "return-type": "text",
+    "tooltip": false
   },
   "hyprland/workspaces": {
     "persistent-workspaces": {
@@ -27,7 +35,7 @@
   "mpris": {
     "format": "{artist} - {title}",
     "tooltip-format": "{album}",
-    "format-paused": " {artist} - {title} | ",
+    "format-paused": "{artist} - {title}",
     "on-click": "playerctl play-pause",
     "on-scroll-up": "",
     "on-scroll-down": "",

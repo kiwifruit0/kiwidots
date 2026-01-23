@@ -40,6 +40,11 @@ tooltip {
   padding: 3px 8px;
 } 
 
+#custom-separator, #custom-mpris-separator {
+  color: @nord3;
+  padding: 0 10px;
+}
+
 #workspaces button {
   color: transparent;
   background: linear-gradient(90deg,rgba(59, 66, 82, 1) 0%, rgba(67, 76, 94, 1) 100%);

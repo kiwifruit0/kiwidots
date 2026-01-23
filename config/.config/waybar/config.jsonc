@@ -10,7 +10,7 @@
       "hyprland/workspaces",
       "custom/separator",
       "mpris",
-      "custom/separator",
+      "custom/mpris-separator",
       "wireplumber",
       "backlight",
       "battery"
