@@ -12,8 +12,8 @@
       "mpris",
       "custom/separator",
       "wireplumber",
-      "battery",
-      "backlight"
+      "backlight",
+      "battery"
     ]
   },
   "modules-center": [

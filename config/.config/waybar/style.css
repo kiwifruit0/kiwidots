@@ -24,7 +24,7 @@ tooltip {
   background: @nord0;
   color: @nord4;
   border: 1px solid @nord2;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 #main {

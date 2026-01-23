@@ -42,6 +42,8 @@
       "",
       ""
     ],
+    "on-scroll-up": "",
+    "on-scroll-down": "",
     "format-charging": "{capacity} 󰂄",
     "states": {
       "warning": 20,
