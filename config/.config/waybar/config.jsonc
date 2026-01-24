@@ -1,7 +1,7 @@
 {
   "layer": "top",
-  "position": "top",
-  "margin-top": 5,
+  "position": "bottom",
+  "margin-bottom": 5,
   "group/main": {
     "orientation": "horizontal",
     "modules": [

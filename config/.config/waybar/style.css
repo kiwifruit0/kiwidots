@@ -32,6 +32,7 @@ tooltip {
   padding: 0px 10px;
   border-radius: 10px;
   border: 1px solid @nord3;
+  /* transition: all 1s ease-in-out; */
 }
 
 #workspaces, #mpris, #clock, #wireplumber, #battery, #backlight {
@@ -61,6 +62,7 @@ tooltip {
 
 #workspaces button:hover {
   background: @nord1;
+  transition: all 0.3s ease;
 }
 
 #workspaces button.active {
@@ -75,6 +77,7 @@ tooltip {
 
 #workspaces button.occupied {
   min-height: 25px;
+  transition: all 0.3s ease;
 }
 
 #mpris.paused {

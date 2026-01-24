@@ -87,7 +87,7 @@ return {
 						"--clang-tidy",
 						"--header-insertion=iwyu",
 						"--completion-style=detailed",
-						"--function-arg-placeholders=true", -- FIXED
+						"--function-arg-placeholders=true",
 					},
 
 					filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp", "cuda" },

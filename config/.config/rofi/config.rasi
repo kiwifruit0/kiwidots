@@ -1,83 +1,128 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Configuration For Rofi Version: 1.7.3
+ **/
+
 configuration {
-	modi:				"drun";
-	font:				"JetBrainsMono Nerd Font 12";
-	display-drun: 			"";
-	sidebar-mode: 			false;
-	drun-display-format: 		"{name}";
-}
+	/*---------- General setting ----------*/
+	modi: "drun,run,filebrowser,window";
+	case-sensitive: false;
+	cycle: true;
+	filter: "";
+	scroll-method: 0;
+	normalize-match: true;
+	show-icons: true;
+	icon-theme: "Papirus";
+/*	cache-dir: ;*/
+	steal-focus: false;
+/*	dpi: -1;*/
 
-@theme "/dev/null"
+	/*---------- Matching setting ----------*/
+	matching: "normal";
+	tokenize: true;
 
-* {
-	bg:				#3b4252;
-	fg:				#d8dee9;
-	button:				#4c566a;
-  highlight:    #81a1c1;
+	/*---------- SSH settings ----------*/
+	ssh-client: "ssh";
+	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
+	parse-hosts: true;
+	parse-known-hosts: true;
 
-	background-color:		@bg;
-	text-color:			@fg;
-}
+	/*---------- Drun settings ----------*/
+	drun-categories: "";
+	drun-match-fields: "name,generic,exec,categories,keywords";
+	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+	drun-show-actions: false;
+	drun-url-launcher: "xdg-open";
+	drun-use-desktop-cache: false;
+	drun-reload-desktop-cache: false;
+	drun {
+		/** Parse user desktop files. */
+		parse-user:   true;
+		/** Parse system desktop files. */
+		parse-system: true;
+    }
 
-window {
-	transparency:                   "real";
-	border-radius:                  7px;
-	width:			    	30%;
-	padding: 			10px;
-	location: 			center;
-	border:				2px;
-	border-color:			@highlight;
-}
+	/*---------- Run settings ----------*/
+	run-command: "{cmd}";
+	run-list-command: "";
+	run-shell-command: "{terminal} -e {cmd}";
 
-prompt { enabled: false; }
+	/*---------- Fallback Icon ----------*/
+	run,drun {
+		fallback-icon: "application-x-addon";
+	}
 
-entry {
-	placeholder:			"search";
-	expand:                         true;
-	padding:                        5px 2% 5px 2%;
-	background-color:               @button;
-  placeholder-color:              @fg;
-}
+	/*---------- Window switcher settings ----------*/
+	window-match-fields: "title,class,role,name,desktop";
+	window-command: "wmctrl -i -R {window}";
+	window-format: "{w} - {c} - {t:0}";
+	window-thumbnail: false;
 
-inputbar {
-	children: 			[ prompt, entry ];
-	background-color:               @button;
-	text-color:                     @fg;
-	expand:                         false;
-	border-radius:                  6px;
-	padding:                        8px;
-}
+	/*---------- Combi settings ----------*/
+/*	combi-modi: "window,run";*/
+/*	combi-hide-mode-prefix: false;*/
+/*	combi-display-format: "{mode} {text}";*/
 
-listview {
-	columns:                        1;
-	lines:	                        10;
-	cycle:                          false;
-	dynamic:                        true;
-	layout:                         vertical;
-}
+	/*---------- History and Sorting ----------*/
+	disable-history: false;
+	sorting-method: "normal";
+	max-history-size: 25;
 
-mainbox {
-	children:                       [ inputbar, listview ];
-	spacing:                       	2%;
-	padding:                        2% 1% 2% 1%;
-}
+	/*---------- Display setting ----------*/
+	display-window: "Windows";
+	display-windowcd: "Window CD";
+	display-run: "Run";
+	display-ssh: "SSH";
+	display-drun: "Apps";
+	display-combi: "Combi";
+	display-keys: "Keys";
+	display-filebrowser: "Files";
 
-element {
-	orientation:                    vertical;
-	border-radius:                  0%;
-	padding:                        0.75% 0% 0.75% 0%;
-}
+	/*---------- Misc setting ----------*/
+	terminal: "kitty";
+	font: "Mono 12";
+	sort: false;
+	threads: 0;
+	click-to-exit: true;
+/*	ignored-prefixes: "";*/
+/*	pid: "/run/user/1000/rofi.pid";*/
 
-element-text {
-	expand:                         true;
-	vertical-align:                 0.5;
-	margin:                         0% 3% 0% 3%;
-	background-color:               inherit;
-  text-color:                     inherit;
-}
+	/*---------- File browser settings ----------*/
+    filebrowser {
+/*	  directory: "/home";*/
+      directories-first: true;
+      sorting-method:    "name";
+    }
 
-element selected {
-	background-color:               @fg;
-	text-color:                     @bg;
-	border-radius:                  6px;
-  border-color:                   @highlight;
+	/*---------- Other settings ----------*/
+    timeout {
+      action: "kb-cancel";
+      delay:  0;
+    }
+
+	/*---------- Keybindings ----------*/
+
+
+  /* remove default keybindings */
+  kb-remove-char-forward: "Delete";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
+  kb-remove-to-eol: "";
+  kb-remove-to-sol: "";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-mode-complete: "";
+
+  /* new keybindings */
+  kb-row-left:       "Control+h";
+  kb-row-down:       "Control+j";
+  kb-row-up:         "Control+k";
+  kb-row-right:      "Control+l";
+                     
+  kb-page-prev:      "Control+u";
+  kb-page-next:      "Control+d";
+                     
+  kb-mode-next:      "Control+n";
+  kb-mode-previous:  "Control+p";
 }

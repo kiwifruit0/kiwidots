@@ -4,9 +4,9 @@ battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
 charging_status=$(cat /sys/class/power_supply/BAT0/status)
 
 if [ $charging_status != "Charging" ]; then
-  if [ $battery_level -le 39 ]; then
+  if [ $battery_level -le 6 ]; then
     notify-send -u critical "battery level: ${battery_level}%, charge now"
-  else if [ $battery_level -le 35 ]; then
+  else if [ $battery_level -le 20 ]; then
     notify-send "battery level: ${battery_level}%, connect to power"
     fi
   fi
