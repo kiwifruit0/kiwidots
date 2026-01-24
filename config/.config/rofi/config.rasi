@@ -126,3 +126,5 @@ configuration {
   kb-mode-next:      "Control+n";
   kb-mode-previous:  "Control+p";
 }
+
+@import "~/.config/rofi/styles/style-8.rasi"

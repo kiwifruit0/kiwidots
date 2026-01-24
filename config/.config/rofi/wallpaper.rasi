@@ -1,0 +1,78 @@
+/**
+ * Wallpaper Grid - Optimized Override
+ **/
+
+@import "styles/style-8.rasi"
+
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 true;
+    drun-display-format:        "{name}";
+}
+
+/*****----- Main Box Reset -----*****/
+mainbox {
+    spacing:                     10px;
+    padding:                     20px;
+    /* We explicitly define children to bypass the 'custombox' in style-8 */
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Listview Grid Fix -----*****/
+listview {
+    columns:                     3;
+    lines:                       2;
+    spacing:                     15px;
+    cycle:                       true;
+    dynamic:                     true;
+    layout:                      vertical;
+    /* CRITICAL: style-8 sets this to true, which creates the massive gaps. 
+       Setting it to false allows the row to shrink to the image size. */
+    fixed-height:                false; 
+    fixed-columns:               true;
+    border:                      0px;
+}
+
+/*****----- Element (Selection Box) -----*****/
+element {
+    orientation:                 vertical;
+    /* TIGHT WRAP: Reduced from style-8's 10px to 4px */
+    padding:                     4px;
+    /* TEXT CLOSER: Reduced from style-8's 10px to 2px */
+    spacing:                     2px;
+    /* Rounds the selection highlight */
+    border-radius:               15px;
+}
+
+/*****----- Icon (The Image) -----*****/
+element-icon {
+    size:                        200px;
+    /* ROUNDED IMAGE: Applies directly to the wallpaper preview */
+    border-radius:               15px;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    /* Prevents background bleed-through on corners */
+    background-color:            transparent;
+}
+
+/*****----- Text -----*****/
+element-text {
+    horizontal-align:            0.5;
+    /* Pushes text toward the icon */
+    vertical-align:              0.0;
+    text-color:                  inherit;
+}
+
+/*****----- Specificity Overrides -----*****/
+/* These blocks ensure that style-8's 'normal' and 'alternate' states 
+   don't override our new border-radius and spacing */
+
+element normal.normal,
+element alternate.normal,
+element selected.normal {
+    border-radius:               15px; /* Matches the element rounding */
+}
+
+element-icon selected {
+    background-color:            transparent;
+}
