@@ -6,9 +6,6 @@ return {
 		"giuxtaposition/blink-cmp-copilot",
 	},
 	version = "1.*",
-	keys = {
-		{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-	},
 	opts = {
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "copilot" },

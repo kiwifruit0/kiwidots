@@ -1,0 +1,41 @@
+-- replace treesitter highlighting with extmark-based highlighting
+-- local M = {}
+--
+-- local ns = vim.api.nvim_create_namespace("vsrocq_checked")
+--
+-- -- Defensive helper
+-- local function is_valid_buf(buf)
+--   return type(buf) == "number" and vim.api.nvim_buf_is_valid(buf)
+-- end
+--
+-- function M.updateHighlights(bufnr, ranges)
+--   if not is_valid_buf(bufnr) then
+--     return
+--   end
+--
+--   if type(ranges) ~= "table" then
+--     return
+--   end
+--
+--   -- Clear previous marks
+--   vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+--
+--   for _, r in ipairs(ranges) do
+--     -- r.range.start.line (LSP style)
+--     local start = r.range and r.range.start
+--     local finish = r.range and r.range["end"]
+--
+--     if start and finish then
+--       for line = start.line, finish.line do
+--         vim.api.nvim_buf_set_extmark(bufnr, ns, line, 0, {
+--           hl_group = "CoqtailChecked",
+--           hl_eol = true,
+--           priority = 200,
+--         })
+--       end
+--     end
+--   end
+-- end
+--
+-- return M
+--

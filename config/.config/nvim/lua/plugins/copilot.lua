@@ -15,6 +15,10 @@ return {
 						dismiss = "<C-l>",
 					},
 				},
+        filetypes = {
+          rocq = false,
+          coq = false,
+        },
 				panel = { enabled = false },
 			})
 		end,

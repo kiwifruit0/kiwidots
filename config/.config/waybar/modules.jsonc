@@ -12,9 +12,11 @@
   },
   "hyprland/workspaces": {
     "persistent-workspaces": {
-      "*": 4
+      "*": 3
     },
-    "cursor": true
+    "cursor": true,
+    "on-scroll-down": "hyprctl dispatch workspace r-1",
+    "on-scroll-up": "hyprctl dispatch workspace next"
   },
   "hyprland/window": {
     "max-length": 45
@@ -37,6 +39,7 @@
     "tooltip-format": "{album}",
     "format-paused": "{artist} - {title}",
     "on-click": "playerctl play-pause",
+    "on-right-click": "playerctl stop",
     "on-scroll-up": "",
     "on-scroll-down": "",
     "max-length": 30
@@ -66,7 +69,7 @@
       "󰖀",
       "󰕾"
     ],
-    "format-muted": " 󰝟  ",
+    "format-muted": " 󰝟 ",
     "on-click": "$HOME/.config/hypr/scripts/wiremix-toggle.sh",
     "reverse-scrolling": 1,
     "smooth-scrolling-threshold": 0.5

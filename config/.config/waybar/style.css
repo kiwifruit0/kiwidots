@@ -50,6 +50,7 @@ tooltip {
   transition: opacity 0.3s ease;
 }
 
+
 #workspaces button {
   color: transparent;
   background: linear-gradient(90deg, @nord1 0%, @nord2 100%);
@@ -60,11 +61,6 @@ tooltip {
   min-height: 2px;
 }
 
-#workspaces button:hover {
-  background: @nord1;
-  transition: all 0.3s ease;
-}
-
 #workspaces button.active {
   padding: 0px 15px;
   color: @nord0;
@@ -73,6 +69,12 @@ tooltip {
   background: linear-gradient(90deg, @nord10 0%, @nord9 100%);
   min-width: 30px;
 }
+
+#workspaces button:hover {
+  background: @nord1;
+  transition: all 0.3s ease;
+}
+
 
 
 #workspaces button.occupied {

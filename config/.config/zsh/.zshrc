@@ -83,3 +83,4 @@ alias ta='tmux attach-session'
 
 export PATH="$HOME/.local/bin:$PATH"
 
+eval $(opam env)
