@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- set cwd to the directory passed to nvim (if any)
+-- change to directory if neovim is opened with a directory argument
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
 		local arg = vim.fn.argv(0)

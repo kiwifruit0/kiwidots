@@ -84,3 +84,7 @@ alias ta='tmux attach-session'
 export PATH="$HOME/.local/bin:$PATH"
 
 eval $(opam env)
+
+if [ -f "./venv/bin/activate" ]; then
+    source ./venv/bin/activate
+fi
