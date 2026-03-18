@@ -53,32 +53,23 @@ return {
 						},
 					},
 				},
-				-- pylsp = {
-				-- 	settings = {
-				-- 		pylsp = {
-				-- 			plugins = {
-				-- 				pyflakes = { enabled = false },
-				-- 				pycodestyle = { enabled = false },
-				-- 				autopep8 = { enabled = false },
-				-- 				yapf = { enabled = false },
-				-- 				mccabe = { enabled = false },
-				-- 				pylsp_mypy = { enabled = false },
-				-- 				pylsp_black = { enabled = false },
-				-- 				pylsp_isort = { enabled = false },
-				-- 			},
-				-- 		},
-				-- 	},
-				-- },
-        pyright = {},
-				ruff = {
+				pyright = {
 					settings = {
-						format = { enabled = true },
-						organizeImports = true,
-						lint = {
-							enable = true,
-							select = { "E", "F", "W" },
+						pyright = {
+							disableOrganizeImports = true, -- let Ruff handle imports
+						},
+						python = {
+							analysis = {
+								typeCheckingMode = "standard",
+								-- remove the ignore = {"*"} unless you want pyright silent on types too
+							},
 						},
 					},
+				},
+				ruff = {
+					on_attach = function(client)
+						client.server_capabilities.hoverProvider = false
+					end,
 				},
 				hls = {},
 			}
@@ -105,7 +96,14 @@ return {
 				ensure_installed = vim.tbl_keys(pkgs),
 			})
 
-			-- load all servers and configs
+			vim.lsp.config("*", {
+				on_attach = function(client, bufnr)
+					if client.name == "ruff" then
+						client.server_capabilities.hoverProvider = false
+					end
+				end,
+			})
+
 			for name, cfg in pairs(pkgs) do
 				cfg.capabilities = require("blink.cmp").get_lsp_capabilities(cfg.capabilities or {})
 				vim.lsp.config(name, cfg)

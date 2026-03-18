@@ -4,18 +4,16 @@ return {
 		{
 			"<leader>gf",
 			function()
-				-- Organize imports first if Python
 				if vim.bo.filetype == "python" then
 					vim.lsp.buf.code_action({
 						context = { only = { "source.organizeImports" } },
 						apply = true,
+						filter = function(action)
+							return action.kind == "source.organizeImports"
+						end,
 					})
-					-- Small delay to let organize imports finish
-					vim.defer_fn(function()
-						vim.lsp.buf.format({ async = false })
-					end, 100)
+					vim.lsp.buf.format({ async = false, name = "ruff" })
 				else
-					-- Just format for other filetypes
 					vim.lsp.buf.format({ async = false })
 				end
 			end,
