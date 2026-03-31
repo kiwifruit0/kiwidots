@@ -31,7 +31,7 @@ tooltip {
   background: @nord0;
   padding: 0px 10px;
   border-radius: 10px;
-  border: 1px solid @nord3;
+  border: 2px solid @nord0;
   /* transition: all 1s ease-in-out; */
 }
 

@@ -26,6 +26,7 @@ return {
 			{ "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
 			{ "<leader>e", vim.diagnostic.open_float, desc = "Show diagnostic under cursor" },
 			{ "<leader>q", vim.diagnostic.setloclist, desc = "Open diagnostics list" },
+      { "<leader>sh", "<cmd>LspClangdSwitchSourceHeader<CR>", desc = "Switch between source/header" },
 		},
 		config = function()
 			-- for packages to install / with manual config
@@ -74,6 +75,7 @@ return {
 				hls = {},
 			}
 
+			-- clang config
 			local home = os.getenv("HOME")
 			local pio_toolchains = home .. "/.platformio/packages/toolchain-*/bin/*"
 
@@ -82,9 +84,11 @@ return {
 					"clangd",
 					"--background-index",
 					"--clang-tidy",
-					"--header-insertion=iwyu",
 					"--completion-style=detailed",
 					"--function-arg-placeholders=true",
+					"--cross-file-rename=true",
+					"--header-insertion=never",
+					"--compile-commands-dir=.",
 					"--query-driver=" .. pio_toolchains,
 				},
 				filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp", "cuda" },

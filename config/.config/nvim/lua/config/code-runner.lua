@@ -13,7 +13,8 @@ M.setup = function()
 	end, vim.tbl_extend("force", opts, { desc = "Run Haskell (GHCi) REPL below with current file" }))
 
 	vim.keymap.set("n", "<leader>rp", function()
-		vim.cmd(string.format("silent !tmux split-window -v -l 15 \"%s -c 'python3 %% ; exec %s'\" &", shell, shell))
+		vim.cmd("silent !kitty @ launch --location=hsplit --bias=40 \"zsh -c 'python3 %'\" &")
+		-- vim.cmd(string.format("silent !tmux split-window -v -l 15 \"%s -c 'python3 %% ; exec %s'\" &", shell, shell))
 	end, vim.tbl_extend("force", opts, { desc = "Run Python in tmux pane below" }))
 end
 

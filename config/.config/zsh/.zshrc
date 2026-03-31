@@ -88,3 +88,6 @@ eval $(opam env)
 if [ -f "./venv/bin/activate" ]; then
     source ./venv/bin/activate
 fi
+export PATH="/home/kiwi/bin:$PATH"
+
+[ -f ~/.env.secrets ] && source ~/.env.secrets

@@ -45,14 +45,13 @@ return {
 		{ "nvim-telescope/telescope.nvim" },
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 		{ "nvim-lua/plenary.nvim" },
-		{ "folke/which-key.nvim" },
 		{ "nvim-treesitter/nvim-treesitter" },
 	},
 
 	config = function()
 		vim.g.pioConfig = {
 			lsp = "clangd", -- value: clangd | ccls
-			clangd_source = "compiledb", -- value: ccls | compiledb, For detailed explation check :help platformio-clangd_source
+			clangd_source = "ccls", -- value: ccls | compiledb, For detailed explation check :help platformio-clangd_source
 			menu_key = "<leader>\\", -- replace this menu key  to your convenience
 			debug = false, -- enable debug messages
 		}
