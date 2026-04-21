@@ -67,6 +67,7 @@ alias :q='exit'
 alias elt='exa --long --tree --git'
 alias timeshift-gtk='sudo -E HOME=/root XDG_CACHE_HOME=/root/.cache timeshift-gtk'
 alias leet='nvim leetcode.nvim'
+alias ablewine='WINEPREFIX=/home/kiwi/apps/ableton/.ableton-wine'
 
 # tmux aliases
 alias tn='tmux new-session -s'
@@ -91,3 +92,6 @@ fi
 export PATH="/home/kiwi/bin:$PATH"
 
 [ -f ~/.env.secrets ] && source ~/.env.secrets
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$HOME/apps/flutter/bin:$PATH"
+export CHROME_EXECUTABLE=/usr/bin/chromium

@@ -26,7 +26,7 @@ return {
 			{ "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
 			{ "<leader>e", vim.diagnostic.open_float, desc = "Show diagnostic under cursor" },
 			{ "<leader>q", vim.diagnostic.setloclist, desc = "Open diagnostics list" },
-      { "<leader>sh", "<cmd>LspClangdSwitchSourceHeader<CR>", desc = "Switch between source/header" },
+			{ "<leader>sh", "<cmd>LspClangdSwitchSourceHeader<CR>", desc = "Switch between source/header" },
 		},
 		config = function()
 			-- for packages to install / with manual config
@@ -73,6 +73,10 @@ return {
 					end,
 				},
 				hls = {},
+				dartls = {
+					filetypes = { "dart" },
+					root_markers = { "pubspec.yaml", ".git" },
+				},
 			}
 
 			-- clang config
@@ -95,9 +99,18 @@ return {
 			}
 
 			-- install servers in server list
+			local mason_lspconfig_pkgs = {
+				"bashls",
+				"lua_ls",
+				"pyright",
+				"ruff",
+				"hls",
+				"clangd",
+			}
+
 			require("mason").setup()
 			require("mason-lspconfig").setup({
-				ensure_installed = vim.tbl_keys(pkgs),
+				ensure_installed = mason_lspconfig_pkgs,
 			})
 
 			vim.lsp.config("*", {

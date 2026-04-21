@@ -17,3 +17,10 @@ vim.keymap.set({ "n", "v" }, "<leader>pp", '"+p')
 --vim.keymap.set("n", "<leader>rh", function()
 --  vim.cmd('silent !tmux split-window -v -l 15 "ghci %" &')
 --end, { desc = "Open GHCi REPL below with current file" })
+--
+vim.keymap.set("n", "gx", function()
+	local url = vim.fn.expand("<cfile>")
+	if url ~= "" then
+		vim.ui.open(url)
+	end
+end, { desc = "Open URL under cursor" })
