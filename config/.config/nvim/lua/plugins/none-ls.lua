@@ -38,6 +38,7 @@ return {
 			sources = {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.clang_format.with({
+					filetypes = { "c", "cpp", "cs", "java", "cuda", "proto", "vil", "json", "js" },
 					extra_args = {
 						"--style=" .. [[{
             BasedOnStyle: LLVM,

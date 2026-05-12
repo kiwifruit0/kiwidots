@@ -77,6 +77,9 @@ return {
 					filetypes = { "dart" },
 					root_markers = { "pubspec.yaml", ".git" },
 				},
+        jsonls = {
+          filetypes = { "json", "jsonc", "vil" },
+        },
 			}
 
 			-- clang config

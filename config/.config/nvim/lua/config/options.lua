@@ -26,3 +26,5 @@ vim.cmd([[
 vim.cmd([[
   hi CursorLineNr guifg=#FFFFFF guibg=NONE gui=bold
 ]])
+
+vim.o.exrc = true

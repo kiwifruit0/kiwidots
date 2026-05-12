@@ -95,3 +95,4 @@ export PATH="/home/kiwi/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="$HOME/apps/flutter/bin:$PATH"
 export CHROME_EXECUTABLE=/usr/bin/chromium
+
