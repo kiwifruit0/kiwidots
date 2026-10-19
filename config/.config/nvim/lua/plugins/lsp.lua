@@ -1,138 +1,89 @@
 return {
-	{
-		"mason-org/mason.nvim",
-		opts = {},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		opts = {},
-		dependencies = { "mason-org/mason.nvim" },
-	},
-	{
-		"neovim/nvim-lspconfig",
-		lazy = false,
-		dependencies = {
-			"mason-org/mason.nvim",
-			"mason-org/mason-lspconfig.nvim",
-		},
-		keys = {
-			{ "gd", vim.lsp.buf.definition, desc = "Go to definition" },
-			-- { "gr", vim.lsp.buf.references, desc = "Find references" },
-			{ "gi", vim.lsp.buf.implementation, desc = "Go to implementation" },
-			{ "K", vim.lsp.buf.hover, desc = "Hover documentation" },
-			{ "<leader>rn", vim.lsp.buf.rename, desc = "Rename symbol" },
-			{ "<leader>ca", vim.lsp.buf.code_action, desc = "Code action" },
-			{ "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
-			{ "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
-			{ "<leader>e", vim.diagnostic.open_float, desc = "Show diagnostic under cursor" },
-			{ "<leader>q", vim.diagnostic.setloclist, desc = "Open diagnostics list" },
-			{ "<leader>sh", "<cmd>LspClangdSwitchSourceHeader<CR>", desc = "Switch between source/header" },
-		},
-		config = function()
-			-- for packages to install / with manual config
-			local pkgs = {
-				bashls = {},
-				-- lua packages
-				lua_ls = {
-					root_markers = {
-						"init.lua",
-						".luarc.json",
-						".luarc.jsonc",
-						".luacheckrc",
-						".stylua.toml",
-						"stylua.toml",
-						"selene.toml",
-						"selene.yml",
-						".git",
-					},
-					settings = {
-						Lua = {
-							diagnostics = { globals = { "vim" } },
-							workspace = { checkThirdParty = false },
-							telemetry = { enable = false },
-							formattingProvider = "stylua",
-						},
-					},
-				},
-				pyright = {
-					settings = {
-						pyright = {
-							disableOrganizeImports = true, -- let Ruff handle imports
-						},
-						python = {
-							analysis = {
-								typeCheckingMode = "standard",
-								-- remove the ignore = {"*"} unless you want pyright silent on types too
-							},
-						},
-					},
-				},
-				ruff = {
-					on_attach = function(client)
-						client.server_capabilities.hoverProvider = false
-					end,
-				},
-				hls = {},
-				dartls = {
-					filetypes = { "dart" },
-					root_markers = { "pubspec.yaml", ".git" },
-				},
-        jsonls = {
-          filetypes = { "json", "jsonc", "vil" },
+  {
+    "mason-org/mason.nvim",
+    opts = {},
+  },
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    dependencies = {
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "saghen/blink.cmp",
+    },
+    keys = {
+      { "<leader>lm", "<cmd>Mason<cr>", desc = "Manage language tools" },
+      { "<leader>li", "<cmd>checkhealth vim.lsp<cr>", desc = "LSP status" },
+      { "<leader>lu", "<cmd>MasonToolsUpdate<cr>", desc = "Update language servers and tools" },
+      { "<leader>lf", "<cmd>ConformInfo<cr>", desc = "Formatter status" },
+    },
+    config = function()
+      local languages = require("config.languages")
+      local servers = vim.tbl_keys(languages.servers)
+      table.sort(servers)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("UserSourceHeader", { clear = true }),
+        pattern = { "c", "cpp", "objc", "objcpp", "cuda" },
+        callback = function(event)
+          vim.keymap.set("n", "<leader>sh", require("config.source-header").switch, {
+            buffer = event.buf,
+            desc = "Switch source/header",
+          })
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+        callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if not client then
+            return
+          end
+          if client.name == "ruff" then
+            client.server_capabilities.hoverProvider = false
+          end
+          local function map(key, callback, desc, method)
+            if not method or client:supports_method(method, event.buf) then
+              vim.keymap.set("n", key, callback, { buffer = event.buf, desc = desc })
+            end
+          end
+          map("gd", vim.lsp.buf.definition, "Go to definition", "textDocument/definition")
+          map("gi", vim.lsp.buf.implementation, "Go to implementation", "textDocument/implementation")
+          map("<leader>rn", vim.lsp.buf.rename, "Rename symbol", "textDocument/rename")
+          map("<leader>ca", vim.lsp.buf.code_action, "Code action", "textDocument/codeAction")
+          -- Neovim supplies K (hover), grr (references), and other gr* mappings.
+        end,
+      })
+
+      for name, config in pairs(languages.servers) do
+        vim.lsp.config(name, config)
+      end
+      -- Configure before enabling; only declared servers may auto-attach after installation.
+      require("mason-lspconfig").setup({ automatic_enable = servers })
+      vim.lsp.enable(servers)
+      local tools = vim.list_extend(vim.deepcopy(servers), languages.tools)
+      require("mason-tool-installer").setup({
+        ensure_installed = tools,
+        auto_update = false,
+        run_on_start = true,
+        start_delay = 1000,
+        integrations = {
+          ["mason-lspconfig"] = true,
+          ["mason-null-ls"] = false,
+          ["mason-nvim-dap"] = false,
         },
-			}
-
-			-- clang config
-			local home = os.getenv("HOME")
-			local pio_toolchains = home .. "/.platformio/packages/toolchain-*/bin/*"
-
-			pkgs.clangd = {
-				cmd = {
-					"clangd",
-					"--background-index",
-					"--clang-tidy",
-					"--completion-style=detailed",
-					"--function-arg-placeholders=true",
-					"--cross-file-rename=true",
-					"--header-insertion=never",
-					"--compile-commands-dir=.",
-					"--query-driver=" .. pio_toolchains,
-				},
-				filetypes = { "c", "cpp", "h", "hpp", "objc", "objcpp", "cuda" },
-			}
-
-			-- install servers in server list
-			local mason_lspconfig_pkgs = {
-				"bashls",
-				"lua_ls",
-				"pyright",
-				"ruff",
-				"hls",
-				"clangd",
-			}
-
-			require("mason").setup()
-			require("mason-lspconfig").setup({
-				ensure_installed = mason_lspconfig_pkgs,
-			})
-
-			vim.lsp.config("*", {
-				on_attach = function(client, bufnr)
-					if client.name == "ruff" then
-						client.server_capabilities.hoverProvider = false
-					end
-				end,
-			})
-
-			for name, cfg in pairs(pkgs) do
-				cfg.capabilities = require("blink.cmp").get_lsp_capabilities(cfg.capabilities or {})
-				vim.lsp.config(name, cfg)
-				vim.lsp.enable(name)
-			end
-
-			-- set up diagnostics config
-			require("diagnostics.config")
-			require("diagnostics.virtual_text")
-		end,
-	},
+      })
+    end,
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
 }

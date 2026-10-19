@@ -1,6 +1,6 @@
 -- general settings
 vim.opt.number = true
-vim.opt.signcolumn = "no"
+vim.opt.signcolumn = "yes"
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.cmd("set ignorecase smartcase")
@@ -17,7 +17,7 @@ vim.opt.softtabstop = 2
 -- global window borders
 vim.o.winborder = "rounded"
 
--- haskell
+-- syntax and filetype support
 vim.cmd([[
   syntax on
   filetype plugin indent on

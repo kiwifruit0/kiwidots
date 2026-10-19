@@ -1,31 +1,10 @@
 return {
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					keymap = {
-						accept = "<C-Space>",
-						next = "<M-]>",
-						prev = "<M-[>",
-						dismiss = "<C-l>",
-					},
-				},
-        filetypes = {
-          rocq = false,
-          coq = false,
-        },
-				panel = { enabled = false },
-			})
-		end,
-	},
-
-	{
-		"giuxtaposition/blink-cmp-copilot",
-		dependencies = { "zbirenbaum/copilot.lua" },
-	},
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  event = "InsertEnter",
+  opts = {
+    suggestion = { enabled = false }, -- Suggestions appear in Blink's completion menu.
+    panel = { enabled = false },
+    filetypes = { rocq = false, coq = false },
+  },
 }

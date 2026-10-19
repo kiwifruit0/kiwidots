@@ -9,6 +9,7 @@ return {
 	opts = {
 		picker = { provider = "telescope" },
 		lang = "python3",
+		image_support = true,
 		injector = {
 			["python3"] = {
 				imports = function(default_imports)

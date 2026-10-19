@@ -2,7 +2,19 @@ return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
 	keys = {
-		{ "<leader>t", "<cmd>Neotree toggle<cr>", desc = "Explorer NeoTree (root dir)" },
+		{
+			"<leader>t",
+			function()
+				local file = vim.api.nvim_buf_get_name(0)
+				require("neo-tree.command").execute({
+					source = "filesystem",
+					toggle = true,
+					dir = vim.fn.getcwd(),
+					reveal_file = file ~= "" and file or nil,
+				})
+			end,
+			desc = "Explorer NeoTree (root dir)",
+		},
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",

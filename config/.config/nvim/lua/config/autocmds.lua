@@ -1,6 +1,10 @@
 -- attach treesitter to buffers with installed parsers
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
+		-- VimTeX uses regex syntax for highlighting and syntax-aware editing.
+		if vim.bo.filetype == "tex" or vim.bo.filetype == "plaintex" then
+			return
+		end
 		local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
 		if not lang then
 			return

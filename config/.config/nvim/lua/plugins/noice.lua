@@ -26,6 +26,11 @@ return {
 			view = "cmdline_popup",
 		},
 		views = {
+			hover = {
+				border = {
+					style = "rounded",
+				},
+			},
 			popup = {
 				win_options = {
 					wrap = false,

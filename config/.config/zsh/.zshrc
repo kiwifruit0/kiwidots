@@ -68,6 +68,8 @@ alias elt='exa --long --tree --git'
 alias timeshift-gtk='sudo -E HOME=/root XDG_CACHE_HOME=/root/.cache timeshift-gtk'
 alias leet='nvim leetcode.nvim'
 alias ablewine='WINEPREFIX=/home/kiwi/apps/ableton/.ableton-wine'
+alias omp='oh-my-posh'
+alias wlc="wl-copy"
 
 # tmux aliases
 alias tn='tmux new-session -s'
@@ -78,13 +80,10 @@ alias ta='tmux attach-session'
 # other
 # ------------------------------
 
-[ -f "/home/kiwi/.ghcup/env" ] && . "/home/kiwi/.ghcup/env" # ghcup-env
-
 . "$HOME/.local/share/../bin/env"
 
 export PATH="$HOME/.local/bin:$PATH"
-
-eval $(opam env)
+export PATH="$HOME/dev/scripts/:$PATH"
 
 if [ -f "./venv/bin/activate" ]; then
     source ./venv/bin/activate
@@ -93,6 +92,5 @@ export PATH="/home/kiwi/bin:$PATH"
 
 [ -f ~/.env.secrets ] && source ~/.env.secrets
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
-export PATH="$HOME/apps/flutter/bin:$PATH"
 export CHROME_EXECUTABLE=/usr/bin/chromium
-
+export PATH=~/.npm-global/bin:$PATH

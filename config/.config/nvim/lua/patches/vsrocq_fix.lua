@@ -1,4 +1,4 @@
--- replace treesitter highlighting with extmark-based highlighting
+-- -- replace treesitter highlighting with extmark-based highlighting
 -- local M = {}
 --
 -- local ns = vim.api.nvim_create_namespace("vsrocq_checked")
