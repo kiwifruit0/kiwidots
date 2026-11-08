@@ -44,4 +44,7 @@ def handle_result(args, result, target_window_id, boss):
             encoded = encode_key_mapping(window, keymap)
             window.write_to_child(encoded)
     else:
-        boss.active_tab.neighboring_window(direction)
+        tab = boss.active_tab
+        if tab is None:
+            return
+        tab.neighboring_window(direction)

@@ -70,7 +70,7 @@
       "󰕾"
     ],
     "format-muted": " 󰝟 ",
-    "on-click": "$HOME/.config/hypr/scripts/wiremix-toggle.sh",
+    "on-click": "$HOME/.config/hypr/scripts/tui-popup.sh wiremix wiremix -v output",
     "reverse-scrolling": 1,
     "smooth-scrolling-threshold": 0.5
   },

@@ -13,13 +13,12 @@
       "custom/mpris-separator",
       "wireplumber",
       "backlight",
-      "battery"
-    ]
+      "battery",
+    ],
   },
-  "modules-center": [
-    "group/main"
-  ],
+  "modules-center": ["group/main"],
   "include": [
-    "~/.config/waybar/modules.jsonc"
-  ]
+    "~/.config/waybar/modules.jsonc",
+    "/home/kiwi/.config/waybar/hyprwhspr-module.jsonc",
+  ],
 }

@@ -48,4 +48,8 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		require("noice").setup(opts)
+		require("config.python-docs").setup()
+	end,
 }

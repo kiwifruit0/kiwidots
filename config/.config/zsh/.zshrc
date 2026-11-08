@@ -7,11 +7,11 @@ export ZDOTDIR=$HOME/.config/zsh
 # ------------------------------ 
 # znap
 # ------------------------------ 
-source $ZDOTDIR/znap/znap.zsh  # Start Znap
 # Download Znap, if it's not there yet.
-#[[ -r ~/.config/zsh/znap/znap.zsh ]] ||
+#[[ -r $ZDOTDIR/znap/znap.zsh ]] ||
 #    git clone --depth 1 -- \
 #        https://github.com/marlonrichert/zsh-snap.git $ZDOTDIR/znap
+source $ZDOTDIR/znap/znap.zsh  # Start Znap
 
 # ------------------------------ 
 # oh-my-posh prompt

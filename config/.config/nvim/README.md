@@ -31,6 +31,11 @@ and `<leader>q` for the buffer's diagnostic list. LSP mappings such as `gd`,
 `gi`, `<leader>rn`, and `<leader>ca` are local to attached buffers. Neovim's
 defaults include `K` for hover and `grr` for references.
 
+Python hover documentation converts Sphinx fields into parameter, keyword
+argument, return, and exception sections, with types beside their names.
+Code examples and existing Markdown keep their original formatting. Press `K`
+again to focus a long hover and scroll through it.
+
 Switch C/C++ source and header files with `<leader>sh`. Matching filenames are
 checked in the same folder and in `src`/`source` and `include`/`inc` folders,
 including mirrored subdirectories. This works before compiling or attaching
