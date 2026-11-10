@@ -1,0 +1,12 @@
+@define-color background {{bg}};
+@define-color surface {{surface}};
+@define-color raised {{raised}};
+@define-color muted {{muted}};
+@define-color foreground {{fg}};
+@define-color accent {{accent}};
+@define-color secondary {{secondary}};
+@define-color error {{red}};
+@define-color warning {{yellow}};
+@define-color orange {{orange}};
+@define-color success {{green}};
+@define-color workspace_start {{workspace_start}};

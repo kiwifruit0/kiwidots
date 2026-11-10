@@ -1,0 +1,9 @@
+ZVM_VI_HIGHLIGHT_FOREGROUND='{{bg}}'
+ZVM_VI_HIGHLIGHT_BACKGROUND='{{secondary}}'
+ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg={{muted}}'
+ZSH_HIGHLIGHT_STYLES[command]='fg={{accent}}'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg={{accent}}'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg={{green}}'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg={{green}}'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg={{red}}'

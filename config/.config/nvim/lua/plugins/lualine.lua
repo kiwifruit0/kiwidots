@@ -8,7 +8,7 @@ return {
     return {
       options = {
         icons_enabled = true,
-        theme = "nord",
+        theme = "auto",
         component_separators = { left = "|", right = "|" },
       },
       sections = {
@@ -16,7 +16,7 @@ return {
           {
             require("noice").api.status.mode.get,
             cond = require("noice").api.status.mode.has,
-            color = { fg = "#ff9e64" },
+            color = "WarningMsg",
           },
           "encoding",
           "filetype",

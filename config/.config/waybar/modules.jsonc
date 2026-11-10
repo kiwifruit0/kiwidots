@@ -29,8 +29,8 @@
       "mode": "month",
       "format": {
         "months": "<b>{}</b>",
-        "days": "<span color='#d8dee9'><b>{}</b></span>",
-        "today": "<span color='#8fbcbb'><b><u>{}</u></b></span>"
+        "days": "<b>{}</b>",
+        "today": "<b><u>{}</u></b>"
       }
     }
   },

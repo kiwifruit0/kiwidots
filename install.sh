@@ -15,7 +15,7 @@ Usage: ./install.sh [OPTIONS]
   --system      Link all system configuration, including legacy Ly files (sudo)
   --desktop     Install the minimal Arch desktop, link home/desktop system files,
                 and enable its services (sudo; excludes legacy Ly/suspend files)
-  --spicetify    Set up Spotify's text / Nord theme independently
+  --spicetify    Set up Spotify's text theme with the desktop palette
   --dry-run     Preview selected actions and Stow conflicts without changes
   -h, --help    Show this help
 
@@ -70,7 +70,7 @@ if $dry_run && $desktop; then
     "$repo_dir/scripts/setup-desktop.sh" --dry-run
 fi
 if $dry_run && $spicetify; then
-    echo "Would run scripts/setup-spicetify.sh (text / Nord)."
+    echo "Would run scripts/setup-spicetify.sh (text / desktop palette)."
 fi
 
 if $home_config || $system_config || $desktop; then
@@ -108,7 +108,14 @@ if $desktop; then
     mkdir -p "$HOME/.config/systemd/user" "$HOME/.config/zsh" "$HOME/.local/share/icons"
 fi
 if $home_config; then
+    # Stow must not fold runtime directories into the checkout (backups can be private).
+    if [[ -x "$repo_dir/config/.local/bin/theme-switch" ]]; then
+        mkdir -p "$HOME/.local/bin" "$HOME/.local/state/kiwidots-theme" "$HOME/.themes"
+    fi
     "${home_stow[@]}" config
+    if [[ -x "$repo_dir/config/.local/bin/theme-switch" ]]; then
+        "$repo_dir/config/.local/bin/theme-switch" --init
+    fi
     completed+=("Home configuration linked")
 fi
 if $system_config || $desktop; then
@@ -122,6 +129,6 @@ if $desktop; then
 fi
 if $spicetify; then
     "$repo_dir/scripts/setup-spicetify.sh"
-    completed+=("Spicetify text / Nord applied; reopen Spotify")
+    completed+=("Spicetify text / desktop palette applied; reopen Spotify")
 fi
 

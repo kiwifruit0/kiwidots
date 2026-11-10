@@ -1,0 +1,38 @@
+{
+  "name": "Dracula",
+  "variant": "dark",
+  "source": "https://spec.draculatheme.com/",
+  "colors": {
+    "bg": "#282a36",
+    "surface": "#21222c",
+    "raised": "#44475a",
+    "muted": "#9b9fbc",
+    "fg": "#f8f8f2",
+    "accent": "#bd93f9",
+    "secondary": "#ff79c6",
+    "red": "#ff5555",
+    "green": "#50fa7b",
+    "yellow": "#f1fa8c",
+    "magenta": "#ff79c6",
+    "cyan": "#8be9fd",
+    "orange": "#ffb86c"
+  },
+  "ansi": [
+    "#21222c",
+    "#ff5555",
+    "#50fa7b",
+    "#f1fa8c",
+    "#ff79c6",
+    "#ff79c6",
+    "#8be9fd",
+    "#f8f8f2",
+    "#9b9fbc",
+    "#ff5555",
+    "#50fa7b",
+    "#f1fa8c",
+    "#bd93f9",
+    "#ff79c6",
+    "#8be9fd",
+    "#f8f8f2"
+  ]
+}

@@ -6,3 +6,6 @@ config/.config/tmux/plugins/*
 config/.config/zsh/*/
 config/.config/zsh/*.zwc
 config/.config/hypr/hyprpaper.conf
+
+# Local theme selection points to private runtime state, never committed.
+config/.config/desktop-theme/current

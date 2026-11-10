@@ -62,21 +62,38 @@ Keep a backup of those files (or the whole Nordic-darker directory) and move the
 aside before applying the new links. Leave unrelated files such as GTK bookmarks
 in place.
 
-## GTK appearance
+## Desktop themes
 
-The current Nordic-darker GTK 2/3/4 theme and required assets are tracked under
-`config/.themes/Nordic-darker`, along with their upstream GPL-3.0 licence. The source
-is [EliverLara/Nordic](https://github.com/EliverLara/Nordic); this snapshot retains
-the installed GTK files and omits other desktop environments' theme components.
-The installed CSS already references a few missing optional selection/color-button
-images; this snapshot preserves the theme as installed.
-GTK settings, XSettings, font preferences, the default cursor choice, and relative
-GTK 4 CSS/asset links are managed by Stow. Hyprland applies the matching GSettings
-preferences at session startup so GTK applications pick up the theme and dark mode.
+Press **Super+Ctrl+T** or run `theme-switch` to choose a desktop theme.
+Nord, Dracula, Everforest, Gruvbox, Tokyo Night and all four Catppuccin flavours
+are bundled with matching wallpapers. **Super+Ctrl+W** picks and remembers a
+wallpaper for the selected theme.
 
-Bibata Modern Classic comes from the [upstream 2.0.6 release](https://github.com/ful1e5/Bibata_Cursor/releases/tag/v2.0.6).
-Its generated cursor binaries stay outside Git. Versions and checksums for Bibata
-and Oh My Posh are recorded in `scripts/setup-desktop.sh`.
+```sh
+theme-switch dracula
+theme-switch catppuccin
+theme-switch evergreen
+theme-switch --previous
+theme-switch nord
+```
+
+On an existing Stow desktop, run `python3 scripts/setup-themes.py` once to link
+the new command/resources and back up existing GTK appearance files, then run
+`theme-switch nord`. New home installations initialize the theme automatically.
+
+The switcher covers the wallpaper, Hyprland, Hyprlock, Kitty, Rofi, Waybar, Dunst,
+GTK 2/3/4, Qt 5/6, Neovim, tmux, Zsh, Codex CLI and Claude Code. Spotify follows
+when the repository's Spicetify text theme is configured. See the
+[theme guide](config/.config/desktop-theme/README.md) for exact reload behaviour,
+custom palettes, backups, limitations and recovery commands.
+
+GTK palettes use the tracked Nordic-darker widget design and assets, retaining
+its upstream GPL-3.0 licence from [EliverLara/Nordic](https://github.com/EliverLara/Nordic).
+The original snapshot's optional missing selection/color-button images remain
+unchanged. Bibata Modern Classic comes from the
+[upstream 2.0.6 release](https://github.com/ful1e5/Bibata_Cursor/releases/tag/v2.0.6).
+Its cursor binaries stay outside Git. Versions and checksums for Bibata and Oh My
+Posh are recorded in `scripts/setup-desktop.sh`.
 
 ## Checks
 
@@ -96,11 +113,11 @@ Run:
 ```
 
 This downloads the upstream [text theme](https://github.com/spicetify/spicetify-themes/tree/master/text),
-selects its `Nord` colour scheme, and applies it to the user-owned Spotify install
+selects the current desktop palette, and applies it to the user-owned Spotify install
 managed by `spotify-launcher`. Existing extensions and custom apps are preserved.
 Spicetify's generated config, backups, and downloaded theme files stay outside Git.
 
-Rerun the script to update the theme. After Spotify updates, close Spotify and run
+Rerun the script to update the theme. Subsequent desktop theme switches also update its palette. After Spotify updates, close Spotify and run
 `spicetify --no-restart backup apply`, then reopen it. Update `spicetify-cli` through
 your AUR helper if it needs compatibility fixes for a newer Spotify version.
 

@@ -1,0 +1,38 @@
+{
+  "name": "Catppuccin Mocha",
+  "variant": "dark",
+  "source": "https://catppuccin.com/palette/",
+  "colors": {
+    "bg": "#1e1e2e",
+    "surface": "#181825",
+    "raised": "#313244",
+    "muted": "#9399b2",
+    "fg": "#cdd6f4",
+    "accent": "#cba6f7",
+    "secondary": "#89b4fa",
+    "red": "#f38ba8",
+    "green": "#a6e3a1",
+    "yellow": "#f9e2af",
+    "magenta": "#f5c2e7",
+    "cyan": "#94e2d5",
+    "orange": "#fab387"
+  },
+  "ansi": [
+    "#181825",
+    "#f38ba8",
+    "#a6e3a1",
+    "#f9e2af",
+    "#89b4fa",
+    "#f5c2e7",
+    "#94e2d5",
+    "#cdd6f4",
+    "#9399b2",
+    "#f38ba8",
+    "#a6e3a1",
+    "#f9e2af",
+    "#cba6f7",
+    "#f5c2e7",
+    "#94e2d5",
+    "#cdd6f4"
+  ]
+}

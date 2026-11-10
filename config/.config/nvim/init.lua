@@ -1,4 +1,5 @@
 require("config.options")
 require("config.remap")
+require("config.desktop-theme").setup()
 require("config.lazy")
 require("config")

@@ -15,34 +15,34 @@
   background: transparent;
   font-size: 14px;
   border-radius: 15px;
-  color:@nord4;
+  color:@foreground;
 }
 
 tooltip {
   padding: 0 15px;
   border-radius: 10px;
-  background: @nord0;
-  color: @nord4;
-  border: 1px solid @nord2;
+  background: @background;
+  color: @foreground;
+  border: 1px solid @raised;
   font-size: 13px;
 }
 
 #main {
-  background: @nord0;
+  background: @background;
   padding: 0px 10px;
   border-radius: 10px;
-  border: 2px solid @nord0;
+  border: 2px solid @background;
   /* transition: all 1s ease-in-out; */
 }
 
 #workspaces, #mpris, #clock, #wireplumber, #battery, #backlight {
-  background: @nord0;
+  background: @background;
   border-radius: 15px;
   padding: 3px 8px;
 } 
 
 #custom-separator, #custom-mpris-separator {
-  color: @nord3;
+  color: @muted;
   padding: 0 15px;
 }
 
@@ -53,7 +53,7 @@ tooltip {
 
 #workspaces button {
   color: transparent;
-  background: linear-gradient(90deg, @nord1 0%, @nord2 100%);
+  background: @surface;
   border-radius: 7px;
   padding: 0px 7px;
   transition: all 0.3s ease;
@@ -63,15 +63,15 @@ tooltip {
 
 #workspaces button.active {
   padding: 0px 15px;
-  color: @nord0;
+  color: @background;
   font-size: 14px;
   transition: all 0.3s ease;
-  background: linear-gradient(90deg, @nord10 0%, @nord9 100%);
+  background: linear-gradient(90deg, @workspace_start 0%, @accent 100%);
   min-width: 30px;
 }
 
 #workspaces button:hover {
-  background: @nord1;
+  background: @surface;
   transition: all 0.3s ease;
 }
 
@@ -83,13 +83,13 @@ tooltip {
 }
 
 #mpris.paused {
-  color: @nord3;
+  color: @muted;
 }
 
 #battery.warning:not(.charging) {
-    color: @nord13;
+    color: @warning;
 }
 
 #battery.critical:not(.charging) {
-    color: @nord12;
+    color: @orange;
 }

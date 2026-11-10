@@ -16,7 +16,15 @@ source $ZDOTDIR/znap/znap.zsh  # Start Znap
 # ------------------------------ 
 # oh-my-posh prompt
 # ------------------------------ 
-znap eval oh-my-posh 'oh-my-posh init zsh --config $ZDOTDIR/ohmyposhtheme.toml --print'
+# Oh My Posh reads the stable palette path on each prompt.
+_theme_prompt="$HOME/.config/desktop-theme/current/prompt.toml"
+[[ -r $_theme_prompt ]] || _theme_prompt="$ZDOTDIR/ohmyposhtheme.toml"
+znap eval oh-my-posh 'oh-my-posh init zsh --config $_theme_prompt --print'
+# Explicit config bypasses Oh My Posh's per-session palette cache after switching.
+_kiwidots_omp() {
+  command oh-my-posh --config "$_theme_prompt" "$@"
+}
+_omp_executable=_kiwidots_omp
 
 # ------------------------------ 
 # plugins
@@ -36,7 +44,7 @@ bindkey '^F' autosuggest-accept  # Ctrl+F fill suggestion
 # ------------------------------
 # vim mode
 # ------------------------------
-# changing highlight colors to nord theme
+# Fallback until the desktop palette is initialized
 zvm_config() {
   ZVM_VI_HIGHLIGHT_FOREGROUND=#2e3440
   ZVM_VI_HIGHLIGHT_BACKGROUND=#8fbcbb
@@ -94,3 +102,12 @@ export PATH="/home/kiwi/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export CHROME_EXECUTABLE=/usr/bin/chromium
 export PATH=~/.npm-global/bin:$PATH
+
+# Refresh palette-dependent shell highlights after a desktop theme change.
+_kiwidots_theme_refresh() {
+  local palette="$HOME/.config/desktop-theme/current/shell.zsh"
+  [[ -r $palette ]] && source "$palette"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _kiwidots_theme_refresh
+_kiwidots_theme_refresh

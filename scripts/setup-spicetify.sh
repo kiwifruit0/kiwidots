@@ -25,5 +25,9 @@ mv "$theme_tmp/color.ini" "$theme_tmp/user.css" "$theme_dir/"
 
 spicetify config spotify_path "$spotify_dir" prefs_path "$prefs_path" \
     current_theme text color_scheme Nord inject_css 1 replace_colors 1
+theme_switch="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)/config/.local/bin/theme-switch"
+if [[ -x "$theme_switch" ]]; then
+    "$theme_switch" --restore --no-reload
+fi
 spicetify --no-restart backup apply
-echo "Applied text / Nord. Start Spotify to see the theme."
+echo "Applied text with the desktop palette. Start Spotify to see the theme."

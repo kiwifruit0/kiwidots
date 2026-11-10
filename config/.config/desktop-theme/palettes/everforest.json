@@ -1,0 +1,38 @@
+{
+  "name": "Everforest",
+  "variant": "dark",
+  "source": "https://github.com/sainnhe/everforest",
+  "colors": {
+    "bg": "#2d353b",
+    "surface": "#343f44",
+    "raised": "#475258",
+    "muted": "#9da9a0",
+    "fg": "#d3c6aa",
+    "accent": "#a7c080",
+    "secondary": "#83c092",
+    "red": "#e67e80",
+    "green": "#a7c080",
+    "yellow": "#dbbc7f",
+    "magenta": "#d699b6",
+    "cyan": "#7fbbb3",
+    "orange": "#e69875"
+  },
+  "ansi": [
+    "#343f44",
+    "#e67e80",
+    "#a7c080",
+    "#dbbc7f",
+    "#83c092",
+    "#d699b6",
+    "#7fbbb3",
+    "#d3c6aa",
+    "#9da9a0",
+    "#e67e80",
+    "#a7c080",
+    "#dbbc7f",
+    "#a7c080",
+    "#d699b6",
+    "#7fbbb3",
+    "#d3c6aa"
+  ]
+}

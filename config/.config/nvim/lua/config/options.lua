@@ -23,8 +23,4 @@ vim.cmd([[
   filetype plugin indent on
 ]])
 
-vim.cmd([[
-  hi CursorLineNr guifg=#FFFFFF guibg=NONE gui=bold
-]])
-
 vim.o.exrc = true

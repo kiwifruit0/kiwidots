@@ -1,0 +1,38 @@
+{
+  "name": "Nord",
+  "variant": "dark",
+  "source": "https://www.nordtheme.com/docs/colors-and-palettes",
+  "colors": {
+    "bg": "#2e3440",
+    "surface": "#3b4252",
+    "raised": "#434c5e",
+    "muted": "#8996ab",
+    "fg": "#d8dee9",
+    "accent": "#81a1c1",
+    "secondary": "#8fbcbb",
+    "red": "#bf616a",
+    "green": "#a3be8c",
+    "yellow": "#ebcb8b",
+    "magenta": "#b48ead",
+    "cyan": "#88c0d0",
+    "orange": "#d08770"
+  },
+  "ansi": [
+    "#3b4252",
+    "#bf616a",
+    "#a3be8c",
+    "#ebcb8b",
+    "#81a1c1",
+    "#b48ead",
+    "#88c0d0",
+    "#e5e9f0",
+    "#4c566a",
+    "#bf616a",
+    "#a3be8c",
+    "#ebcb8b",
+    "#81a1c1",
+    "#b48ead",
+    "#8fbcbb",
+    "#eceff4"
+  ]
+}

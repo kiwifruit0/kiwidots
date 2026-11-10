@@ -35,6 +35,8 @@ xdg-utils
 
 # GTK/XWayland appearance and the fonts/icons used by the configs.
 xsettingsd
+qt5ct
+qt6ct
 gsettings-desktop-schemas
 adwaita-fonts
 adwaita-icon-theme
@@ -43,6 +45,7 @@ ttf-jetbrains-mono-nerd
 otf-font-awesome
 
 # Direct dependencies of the terminal and desktop scripts.
+python
 zsh
 git
 curl

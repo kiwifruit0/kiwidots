@@ -1,0 +1,38 @@
+{
+  "name": "Gruvbox",
+  "variant": "dark",
+  "source": "https://github.com/morhetz/gruvbox",
+  "colors": {
+    "bg": "#282828",
+    "surface": "#3c3836",
+    "raised": "#504945",
+    "muted": "#a89984",
+    "fg": "#ebdbb2",
+    "accent": "#fabd2f",
+    "secondary": "#83a598",
+    "red": "#fb4934",
+    "green": "#b8bb26",
+    "yellow": "#fabd2f",
+    "magenta": "#d3869b",
+    "cyan": "#8ec07c",
+    "orange": "#fe8019"
+  },
+  "ansi": [
+    "#3c3836",
+    "#fb4934",
+    "#b8bb26",
+    "#fabd2f",
+    "#83a598",
+    "#d3869b",
+    "#8ec07c",
+    "#ebdbb2",
+    "#a89984",
+    "#fb4934",
+    "#b8bb26",
+    "#fabd2f",
+    "#fabd2f",
+    "#d3869b",
+    "#8ec07c",
+    "#ebdbb2"
+  ]
+}

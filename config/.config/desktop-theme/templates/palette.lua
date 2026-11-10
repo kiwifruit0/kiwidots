@@ -1,0 +1,17 @@
+return {
+  theme = "{{theme_id}}",
+  variant = "{{variant}}",
+  bg = "{{bg}}",
+  surface = "{{surface}}",
+  raised = "{{raised}}",
+  muted = "{{muted}}",
+  fg = "{{fg}}",
+  accent = "{{accent}}",
+  secondary = "{{secondary}}",
+  red = "{{red}}",
+  green = "{{green}}",
+  yellow = "{{yellow}}",
+  magenta = "{{magenta}}",
+  cyan = "{{cyan}}",
+  orange = "{{orange}}",
+}

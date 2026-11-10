@@ -1,6 +1,13 @@
 -- Main Hyprland configuration. Larger groups live in modules/.
 -- Source of truth for the migration: hyprland.conf and its imported modules.
 local home = os.getenv("HOME")
+-- Theme setup must never prevent the rest of the desktop (especially binds) loading.
+local theme = { active_border = "rgb(81a1c1)", inactive_border = "rgba(46,52,64,0)" }
+local ok, selected_theme = pcall(dofile, home .. "/.config/desktop-theme/current/hyprland.lua")
+if ok and type(selected_theme) == "table" then
+    theme.active_border = selected_theme.active_border or theme.active_border
+    theme.inactive_border = selected_theme.inactive_border or theme.inactive_border
+end
 
 -- Monitors: laptop, known external displays, then the fallback rule.
 hl.monitor({ output = "eDP-1", mode = "2944x1840@90", position = "auto", scale = "auto", cm = "auto" })
@@ -16,9 +23,9 @@ require("modules.workspaces")
 
 -- Start once per Hyprland session.
 hl.on("hyprland.start", function()
-	hl.exec_cmd("waybar & hyprsunset & hypridle & awww-daemon & xsettingsd")
+	hl.exec_cmd("hyprsunset & hypridle & awww-daemon & xsettingsd")
 	hl.exec_cmd("$HOME/.config/hypr/scripts/apply-gtk-settings.sh")
-	hl.exec_cmd("awww img $HOME/.config/hypr/wallpapers/current/nord-pixel.png -t grow --transition-pos 0.65,0.65")
+	hl.exec_cmd("$HOME/.local/bin/theme-switch --restore; waybar & dunst")
 	hl.exec_cmd("$HOME/.config/hypr/scripts/wallpaper-monitor.sh")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE && systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("hyprctl dispatch workspace 1")
@@ -40,6 +47,7 @@ hl.env("EDITOR", "/usr/bin/nvim")
 hl.env("GDK_SCALE", "2")
 hl.env("GTK_DPI_SCALE", "1")
 hl.env("QT_SCALE_FACTOR", "2")
+hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 
 hl.config({
 	general = {
@@ -47,8 +55,8 @@ hl.config({
 		gaps_out = 5,
 		border_size = 1,
 		col = {
-			active_border = "rgb(81a1c1)",
-			inactive_border = "rgba(46,52,64,0)",
+			active_border = theme.active_border,
+			inactive_border = theme.inactive_border,
 		},
 		resize_on_border = true,
 		allow_tearing = false,

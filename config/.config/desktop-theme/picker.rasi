@@ -1,0 +1,9 @@
+@import "../rofi/styles/style-8.rasi"
+configuration { show-icons: false; }
+window { width: 520px; }
+mainbox { children: [ "inputbar", "listview", "message" ]; }
+inputbar { children: [ "prompt", "entry" ]; }
+prompt { padding: 5px 8px 5px 0; }
+listview { lines: 9; fixed-height: false; scrollbar: false; }
+element { padding: 12px; }
+element-text { horizontal-align: 0.0; }

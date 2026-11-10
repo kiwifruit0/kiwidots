@@ -6,6 +6,7 @@ local home = os.getenv("HOME")
 local hyprScripts = home .. "/.config/hypr/scripts/"
 
 -- Applications and session tools.
+hl.bind(mod .. " + CTRL + T", hl.dsp.exec_cmd(home .. "/.local/bin/theme-switch"))
 hl.bind(mod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd("thunar"))
 hl.bind(mod .. " + A", hl.dsp.exec_cmd("pkill rofi || rofi -show drun"))
