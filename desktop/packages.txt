@@ -1,0 +1,55 @@
+# Session, panel, terminal, launcher, notifications, and file manager.
+hyprland
+awww
+waybar
+kitty
+rofi
+dunst
+thunar
+gvfs
+
+# Locking, idle management, night light, screenshots, and colour picking.
+hypridle
+hyprlock
+hyprsunset
+hyprshot
+hyprpicker
+
+# Sound, Bluetooth, networking, and the configured keyboard remapping.
+pipewire
+pipewire-alsa
+pipewire-pulse
+wireplumber
+wiremix
+bluez
+bluez-utils
+bluetui
+networkmanager
+keyd
+
+# File/screen sharing portals and privilege prompts.
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+hyprpolkitagent
+xdg-utils
+
+# GTK/XWayland appearance and the fonts/icons used by the configs.
+xsettingsd
+gsettings-desktop-schemas
+adwaita-fonts
+adwaita-icon-theme
+papirus-icon-theme
+ttf-jetbrains-mono-nerd
+otf-font-awesome
+
+# Direct dependencies of the terminal and desktop scripts.
+zsh
+git
+curl
+stow
+brightnessctl
+playerctl
+wl-clipboard
+jq
+socat
+libnotify

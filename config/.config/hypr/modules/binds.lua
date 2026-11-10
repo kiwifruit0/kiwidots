@@ -21,7 +21,6 @@ hl.bind(mod .. " + SHIFT + B", hl.dsp.exec_cmd(hyprScripts .. "tui-popup.sh blue
 hl.bind(mod .. " + R", hl.dsp.exec_cmd("if pgrep waybar > /dev/null; then killall waybar; fi; waybar &"))
 hl.bind(mod .. " + SHIFT + R", hl.dsp.exec_cmd("killall waybar && " .. hyprScripts .. "flip_waybar.sh && waybar &"))
 hl.bind(mod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker | wl-copy"))
--- hl.bind(mod .. " + ALT + D", hl.dsp.exec_cmd("/usr/lib/hyprwhspr/config/hyprland/hyprwhspr-tray.sh record"))
 
 
 -- Window actions.

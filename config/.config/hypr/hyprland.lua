@@ -16,10 +16,11 @@ require("modules.workspaces")
 
 -- Start once per Hyprland session.
 hl.on("hyprland.start", function()
-	hl.exec_cmd("waybar & hyprsunset & hypridle & awww-daemon")
+	hl.exec_cmd("waybar & hyprsunset & hypridle & awww-daemon & xsettingsd")
+	hl.exec_cmd("$HOME/.config/hypr/scripts/apply-gtk-settings.sh")
 	hl.exec_cmd("awww img $HOME/.config/hypr/wallpapers/current/nord-pixel.png -t grow --transition-pos 0.65,0.65")
 	hl.exec_cmd("$HOME/.config/hypr/scripts/wallpaper-monitor.sh")
-	hl.exec_cmd("dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE")
+	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE && systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("hyprctl dispatch workspace 1")
 	hl.exec_cmd("rfkill unblock all")
 end)

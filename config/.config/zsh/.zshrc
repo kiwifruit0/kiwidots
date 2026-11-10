@@ -80,7 +80,7 @@ alias ta='tmux attach-session'
 # other
 # ------------------------------
 
-. "$HOME/.local/share/../bin/env"
+[[ -r "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/dev/scripts/:$PATH"
