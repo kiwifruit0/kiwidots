@@ -14,19 +14,6 @@ export ZDOTDIR=$HOME/.config/zsh
 source $ZDOTDIR/znap/znap.zsh  # Start Znap
 
 # ------------------------------ 
-# oh-my-posh prompt
-# ------------------------------ 
-# Oh My Posh reads the stable palette path on each prompt.
-_theme_prompt="$HOME/.config/desktop-theme/current/prompt.toml"
-[[ -r $_theme_prompt ]] || _theme_prompt="$ZDOTDIR/ohmyposhtheme.toml"
-znap eval oh-my-posh 'oh-my-posh init zsh --config $_theme_prompt --print'
-# Explicit config bypasses Oh My Posh's per-session palette cache after switching.
-_kiwidots_omp() {
-  command oh-my-posh --config "$_theme_prompt" "$@"
-}
-_omp_executable=_kiwidots_omp
-
-# ------------------------------ 
 # plugins
 # ------------------------------ 
 znap source zsh-users/zsh-autosuggestions
@@ -44,16 +31,30 @@ bindkey '^F' autosuggest-accept  # Ctrl+F fill suggestion
 # ------------------------------
 # vim mode
 # ------------------------------
-# Fallback until the desktop palette is initialized
 zvm_config() {
+  # Reset vi mode before Oh My Posh starts its nested editor.
+  ZVM_INIT_MODE=sourcing
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+
+  # Fallback until the desktop palette is initialized.
   ZVM_VI_HIGHLIGHT_FOREGROUND=#2e3440
   ZVM_VI_HIGHLIGHT_BACKGROUND=#8fbcbb
   ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold
 }
 znap source jeffreytse/zsh-vi-mode
 
-# start in insert mode to prevent redraw lag
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+# ------------------------------
+# oh-my-posh prompt
+# ------------------------------
+# Oh My Posh reads the stable palette path on each prompt.
+_theme_prompt="$HOME/.config/desktop-theme/current/prompt.toml"
+[[ -r $_theme_prompt ]] || _theme_prompt="$ZDOTDIR/ohmyposhtheme.toml"
+znap eval oh-my-posh 'oh-my-posh init zsh --config $_theme_prompt --print'
+# Explicit config bypasses Oh My Posh's per-session palette cache after switching.
+_kiwidots_omp() {
+  command oh-my-posh --config "$_theme_prompt" "$@"
+}
+_omp_executable=_kiwidots_omp
 
 # ------------------------------ 
 # settings
